@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val CHANNEL_ID = "channel_id_01"
     private val notificationId = 101
+    private var limit=false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +50,7 @@ class MainActivity : AppCompatActivity() {
             myRef.setValue("1")
         }
     }
-    override fun onRestart() {
-        super.onRestart()
-        takeData()
-    }
+
     private fun takeData() {
         val database = Firebase.database("https://notif-apps-cd3c5-default-rtdb.asia-southeast1.firebasedatabase.app/")
         val myRef = database.getReference("message")
@@ -59,8 +59,9 @@ class MainActivity : AppCompatActivity() {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 val value = dataSnapshot.getValue<String>()!!
-                if (value=="1"){
+                if (value=="1" && !limit){
                     sendNotif()
+                    limit=true
                     val intent = Intent(applicationContext, MainActivity2::class.java)
                     startActivity(intent)
                     finish()

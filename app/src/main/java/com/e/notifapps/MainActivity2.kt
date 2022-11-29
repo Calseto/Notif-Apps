@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
+    private var limit = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,11 +27,6 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
     }
-
-    override fun onRestart() {
-        super.onRestart()
-        takeData()
-    }
     private fun takeData() {
         val database = Firebase.database("https://notif-apps-cd3c5-default-rtdb.asia-southeast1.firebasedatabase.app/")
         val myRef = database.getReference("message")
@@ -39,7 +35,8 @@ class MainActivity2 : AppCompatActivity() {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 val value = dataSnapshot.getValue<String>()!!
-                if (value=="0"){
+                if (value=="0" && !limit){
+                    limit=true
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                     finish()

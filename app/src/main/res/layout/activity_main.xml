@@ -26,7 +26,7 @@
         android:id="@+id/main1_guideline1h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.76"
+        app:layout_constraintGuide_percent="0.74"
         android:orientation="horizontal"/>
 
     <androidx.constraintlayout.widget.Guideline
@@ -40,11 +40,14 @@
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:autoText="true"
         android:backgroundTint="@color/black"
         android:text="@string/tombol_text"
-        app:layout_constraintTop_toTopOf="@id/main1_guideline1h"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@id/main1_guideline2h"
+        app:layout_constraintEnd_toEndOf="@id/main1_guideline2v"
         app:layout_constraintStart_toStartOf="@id/main1_guideline1v"
-        app:layout_constraintEnd_toEndOf="@id/main1_guideline2v" />
+        app:layout_constraintTop_toTopOf="@id/main1_guideline1h" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
