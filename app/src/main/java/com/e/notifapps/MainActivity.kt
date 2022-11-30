@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         takeData()
 
         binding.button.setOnClickListener{
-            myRef.setValue("1")
+            myRef.setValue(1)
         }
     }
 
@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                val value = dataSnapshot.getValue<String>()!!
-                if (value=="1" && !limit){
+                val value = dataSnapshot.getValue<Int>()!!
+                if (value==1 && !limit){
                     sendNotif()
                     limit=true
                     val intent = Intent(applicationContext, MainActivity2::class.java)

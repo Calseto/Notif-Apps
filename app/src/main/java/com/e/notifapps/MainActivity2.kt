@@ -34,8 +34,8 @@ class MainActivity2 : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                val value = dataSnapshot.getValue<String>()!!
-                if (value=="0" && !limit){
+                val value = dataSnapshot.getValue<Int>()!!
+                if (value==0 && !limit){
                     limit=true
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
