@@ -18,12 +18,17 @@ class MainActivity2 : AppCompatActivity() {
     private var limit = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val database = Firebase.database("https://notif-apps-cd3c5-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val myRef = database.getReference("message")
 
         supportActionBar?.hide()
 
         takeData()
 
         binding = ActivityMain2Binding.inflate(layoutInflater)
+        binding.button.setOnClickListener(){
+            myRef.setValue(0)
+        }
         setContentView(binding.root)
 
     }
