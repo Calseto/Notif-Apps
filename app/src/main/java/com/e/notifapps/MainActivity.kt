@@ -66,6 +66,13 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+                if (value==2 && !limit){
+                    sendNotif()
+                    limit=true
+                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    startActivity(intent)
+                    finish()
+                }
 
             }
 

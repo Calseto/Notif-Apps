@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.e.notifapps.databinding.ActivityMain2Binding
+import com.e.notifapps.databinding.ActivityMain3Binding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -13,8 +14,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
-class MainActivity2 : AppCompatActivity() {
-    private lateinit var binding: ActivityMain2Binding
+class MainActivity3 : AppCompatActivity() {
+    private lateinit var binding: ActivityMain3Binding
     private var limit = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,7 @@ class MainActivity2 : AppCompatActivity() {
 
         takeData()
 
-        binding = ActivityMain2Binding.inflate(layoutInflater)
+        binding = ActivityMain3Binding.inflate(layoutInflater)
         binding.button.setOnClickListener(){
             myRef.setValue(0)
         }
@@ -46,9 +47,9 @@ class MainActivity2 : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
-                if (value==2 && !limit){
+                if (value==1 && !limit){
                     limit=true
-                    val intent = Intent(applicationContext, MainActivity3::class.java)
+                    val intent = Intent(applicationContext, MainActivity2::class.java)
                     startActivity(intent)
                     finish()
                 }
